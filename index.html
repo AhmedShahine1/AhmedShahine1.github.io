@@ -860,7 +860,7 @@ nav{background:#070b13bd;box-shadow:0 12px 50px #0005}
       </div>
     </div>
     <div class="hero-ctas">
-      <a href="mailto:ahmed.shahine.h@gmail.com" class="btn btn-primary">Get in touch →</a>
+      <a href="mailto:ahmedshaheen748@gmail.com" class="btn btn-primary">Get in touch →</a>
       <a href="https://github.com/AhmedShahine1" target="_blank" class="btn btn-ghost">GitHub</a>
       <a href="https://linkedin.com/in/ahmed-hani-804120205" target="_blank" class="btn btn-ghost">LinkedIn</a>
     </div>
@@ -1088,7 +1088,7 @@ nav{background:#070b13bd;box-shadow:0 12px 50px #0005}
       Open to remote opportunities in Europe, GCC, USA/Canada, and remote-first companies worldwide.
     </p>
     <div class="contact-links">
-      <a href="mailto:ahmed.shahine.h@gmail.com" class="contact-link">📧 Email</a>
+      <a href="mailto:ahmedshaheen748@gmail.com" class="contact-link">📧 Email</a>
       <a href="https://linkedin.com/in/ahmed-hani-804120205" target="_blank" class="contact-link">💼 LinkedIn</a>
       <a href="https://github.com/AhmedShahine1" target="_blank" class="contact-link">🐙 GitHub</a>
     </div>
@@ -1227,26 +1227,13 @@ nav{background:#070b13bd;box-shadow:0 12px 50px #0005}
       <!-- SETTINGS TAB -->
       <div class="a-section" id="tab-settings">
         <div class="settings-group">
-          <div class="settings-label">GitHub Gist (Cloud Save)</div>
-          <div class="settings-row">
-            <input type="text" class="a-input" id="set-gist-id" placeholder="Gist ID (e.g. a1b2c3d4e5f6...)"/>
-          </div>
-          <div class="settings-row">
-            <input type="password" class="a-input" id="set-gist-token" placeholder="GitHub Personal Access Token"/>
-            <button class="a-btn a-btn-primary" onclick="saveSettings()">Save</button>
-          </div>
-          <div class="save-msg" id="save-msg"></div>
-          <div class="settings-hint">
-            1. Go to <a href="https://gist.github.com" target="_blank">gist.github.com</a> → New Gist → create a file called <code>portfolio-data.json</code> with content <code>{}</code><br/>
-            2. Copy the Gist ID from the URL<br/>
-            3. Go to <a href="https://github.com/settings/tokens" target="_blank">github.com/settings/tokens</a> → Generate token → select <strong>gist</strong> scope only<br/>
-            4. Paste both above and click Save
-          </div>
+          <div class="settings-label">Private Data</div>
+          <div class="settings-hint">Your Development OS data stays in this browser. No personal access token is stored in the public site. Export JSON regularly for backup. Browser notifications work while the site is available; reliable closed-browser/email reminders require a separate authenticated backend.</div>
         </div>
         <div class="settings-group">
           <div class="settings-label">Weekday Schedule (Sun – Thu)</div>
           <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">
-            One task per line. Format: <code>Task name | Category | HH:MM | HH:MM</code> (24-hour time, end time optional)
+            One task per line: <code>Task | Category | Start | End | Minutes</code>. Leave Start/End empty for flexible blocks.
           </div>
           <textarea class="a-input" id="preset-weekday" rows="8"
             style="width:100%;resize:vertical;font-family:var(--mono);font-size:12px;line-height:1.6;direction:ltr;"
@@ -1259,7 +1246,7 @@ nav{background:#070b13bd;box-shadow:0 12px 50px #0005}
         <div class="settings-group">
           <div class="settings-label">Weekend Schedule (Fri – Sat)</div>
           <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">
-            Same format, lighter load
+            Same flexible format; tune the load to your real week.
           </div>
           <textarea class="a-input" id="preset-weekend" rows="5"
             style="width:100%;resize:vertical;font-family:var(--mono);font-size:12px;line-height:1.6;direction:ltr;"
@@ -1320,7 +1307,6 @@ function getData() {
 
 function defaultData() {
   return {
-    gistId:'', gistToken:'',
     presetsWeekday:[
       {text:'Quran — reading / memorization / review',cat:'Faith',start:null,end:null,duration:30},
       {text:'ML / AI — new learning',cat:'ML/AI',start:null,end:null,duration:90},
@@ -1345,7 +1331,6 @@ function defaultData() {
 
 function saveData(data) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  syncToGist(data);
 }
 
 /* ════════════════════════════════════════════════
@@ -1461,15 +1446,6 @@ document.getElementById('admin-backdrop').addEventListener('click', e => {
 ════════════════════════════════════════════════ */
 async function openAdminPanel() {
   const data = getData();
-  // Try loading from Gist
-  if (data.gistId && data.gistToken) {
-    const remote = await loadFromGist(data.gistId, data.gistToken);
-    if (remote) {
-      remote.gistId = data.gistId;
-      remote.gistToken = data.gistToken;
-      saveData(remote);
-    }
-  }
   document.getElementById('admin-panel').classList.add('open');
   switchTab('dashboard');
   loadSettings();
@@ -1529,8 +1505,8 @@ function fmtTime(t) {
 // and it's still not done.
 function isMissed(task, dayKey) {
   if (task.done) return false;
-  if (!task.end) return false;
-  if (dayKey !== todayKey()) return dayKey < todayKey(); // past day, has end time, not done = missed
+  if (dayKey < todayKey()) return true;
+  if (dayKey !== todayKey() || !task.end) return false;
   return nowMinutes() > timeToMinutes(task.end);
 }
 
@@ -1572,7 +1548,7 @@ function renderToday() {
     const missedNow = isMissed(task, key);
     const div = document.createElement('div');
     div.className = 'task-item' + (task.done ? ' done' : '') + (missedNow ? ' missed' : '');
-    const timeStr = task.start ? `${fmtTime(task.start)}${task.end ? ' – ' + fmtTime(task.end) : ''}` : '';
+    const timeStr = task.start ? `${fmtTime(task.start)}${task.end ? ' – ' + fmtTime(task.end) : ''}` : (task.duration ? `${task.duration} min flexible block` : '');
     div.innerHTML = `
       <div class="task-check">${task.done ? '✓' : missedNow ? '!' : ''}</div>
       <div style="flex:1">
@@ -1788,42 +1764,16 @@ function presetToText(preset) {
 }
 
 function textToPreset(raw) {
-  return raw.split('\n').map(l => l.trim()).filter(Boolean).map(line => {
-    const parts = line.split('|').map(p => p.trim());
-    return {
-      text: parts[0] || '',
-      cat: parts[1] || 'Other',
-      start: parts[2] || null,
-      end: parts[3] || null,
-    };
-  }).filter(p => p.text);
+  return raw.split('\n').map(line => line.trim()).filter(Boolean).map(line => {
+    const [text, cat, start, end, duration] = line.split('|').map(x => x.trim());
+    return { text, cat: cat || 'Other', start: start || null, end: end || null, duration: Number(duration) || null };
+  });
 }
 
 function loadSettings() {
   const data = getData();
-  document.getElementById('set-gist-id').value = data.gistId || '';
-  document.getElementById('set-gist-token').value = data.gistToken || '';
   document.getElementById('preset-weekday').value = presetToText(data.presetsWeekday || []);
   document.getElementById('preset-weekend').value = presetToText(data.presetsWeekend || []);
-}
-
-async function saveSettings() {
-  const data = getData();
-  data.gistId    = document.getElementById('set-gist-id').value.trim();
-  data.gistToken = document.getElementById('set-gist-token').value.trim();
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-
-  const msg = document.getElementById('save-msg');
-  msg.style.color = '';
-  msg.textContent = 'Checking connection...';
-
-  const ok = await syncToGist(data);
-  if (ok) {
-    msg.style.color = 'var(--green)';
-    msg.textContent = '✓ Saved and synced successfully';
-    setTimeout(() => { msg.textContent = ''; msg.style.color = ''; }, 4000);
-  }
-  // on failure, syncToGist already called showGistError with the real reason
 }
 
 function savePresets(which) {
@@ -1852,6 +1802,7 @@ function clearData() {
   if (!confirm('Delete ALL data? This cannot be undone.')) return;
   localStorage.removeItem(STORAGE_KEY);
   renderToday();
+  renderDashboard();
 }
 
 
@@ -1874,6 +1825,22 @@ function saveMockInterview(){const type=document.getElementById('mock-type').val
 function renderInterviews(){const list=getData().interviews||[];document.getElementById('interview-list').innerHTML=list.length?list.map(x=>'<div class="interview-card"><div style="display:flex;justify-content:space-between"><div><span class="pill">'+esc(x.type)+'</span><span class="pill">'+x.date+'</span></div><span class="interview-score">'+x.score+'/10</span></div><div style="margin-top:10px;font-size:13px"><b>Improve:</b> '+esc(x.weakness||'—')+'</div><div class="os-muted" style="margin-top:6px">'+esc(x.notes||'')+'</div></div>').join(''):'<div class="os-muted">No sessions yet. Run a ChatGPT mock interview and log the result here.</div>'}
 async function enableNotifications(){if(!('Notification'in window)){alert('Notifications are not supported in this browser.');return}const p=await Notification.requestPermission();if(p==='granted')new Notification('Ahmed Development OS',{body:'Browser reminders enabled while the site is active.'})}
 
+
+// Best-effort local reminder. Background/email delivery needs an authenticated service.
+function maybeNotifyUnfinished() {
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
+  const hour = new Date().getHours();
+  if (hour < 20) return;
+  const day = getData().days[todayKey()] || {tasks:[]};
+  const pending = day.tasks.filter(t => !t.done);
+  const marker = 'ados_reminder_' + todayKey();
+  if (pending.length && localStorage.getItem(marker) !== '1') {
+    new Notification('Ahmed Development OS', {body: pending.length + ' unfinished task' + (pending.length === 1 ? '' : 's') + ' today.'});
+    localStorage.setItem(marker,'1');
+  }
+}
+setInterval(maybeNotifyUnfinished, 60000);
+maybeNotifyUnfinished();
 
 /* ════════════════════════════════════════════════
    UTILS
