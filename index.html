@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Ahmed Shahine — .NET Developer</title>
+<title>Ahmed Shahine — Software Engineer · ML/AI Journey</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
@@ -789,6 +789,28 @@ footer {
   .admin-body { padding: 20px; }
   .form-row { flex-direction: column; }
 }
+
+/* V2 — professional 3D */
+:root{--violet:#8b5cf6;--cyan:#22d3ee}
+body{background:radial-gradient(circle at 10% 10%,#2563eb18,transparent 28%),radial-gradient(circle at 88% 18%,#8b5cf618,transparent 25%),var(--bg)}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(#fff12 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(#000,transparent)}
+nav{background:#070b13bd;box-shadow:0 12px 50px #0005}
+#hero{perspective:1100px}.hero-content{animation:v2In .8s ease both}
+.hero-grid{transform:perspective(700px) rotateX(60deg) translateY(42%);transform-origin:center bottom;opacity:.18}
+.hero-glow{background:radial-gradient(circle,#2563eb24,#8b5cf610 42%,transparent 70%);animation:v2Glow 8s ease-in-out infinite}
+.skill-card,.project-card,.stat-card,.day-card{transform-style:preserve-3d;box-shadow:0 18px 55px #0002}
+.skill-card:hover,.project-card:hover{transform:perspective(800px) translateY(-7px) rotateX(2deg);box-shadow:0 26px 70px #0006}
+.btn-primary{background:linear-gradient(135deg,#2563eb,#7c3aed);box-shadow:0 10px 32px #2563eb33}
+#admin-panel{width:min(1180px,96vw);background:#0b1220f4;box-shadow:0 40px 120px #000a}.admin-tabs{overflow-x:auto}.a-tab{white-space:nowrap}
+.os-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:14px;margin-bottom:18px}.os-card{background:linear-gradient(145deg,#121d30,#0d1525);border:1px solid var(--line);border-radius:15px;padding:18px}
+.os-kicker{font:10px var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--accent2)}.os-big{font:600 27px var(--sans);margin:8px 0}.os-muted{font-size:12px;color:var(--muted)}
+.rings{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:16px 0}.ring{background:var(--bg3);border:1px solid var(--line);border-radius:12px;padding:13px;text-align:center}.ring b{display:block;font:500 19px var(--mono)}.ring span{font-size:9px;color:var(--muted)}
+.track-grid,.weekly-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.track,.week-target,.interview-card{background:var(--bg3);border:1px solid var(--line);border-radius:12px;padding:14px}.track-head{display:flex;justify-content:space-between;gap:10px;font-size:12px;margin-bottom:8px}.track-bar{height:6px;background:var(--line);border-radius:99px;overflow:hidden}.track-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--violet),var(--cyan));border-radius:99px}
+.timer-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}.timer-display{font:500 23px var(--mono);color:var(--accent2)}
+.interview-card{margin-bottom:9px}.interview-score{font:500 18px var(--mono);color:var(--accent2)}.pill{display:inline-block;padding:3px 8px;border:1px solid var(--line);border-radius:99px;font:10px var(--mono);color:var(--muted);margin-right:5px}
+@keyframes v2In{from{opacity:0;transform:translateY(28px) rotateX(4deg)}to{opacity:1;transform:none}}@keyframes v2Glow{50%{transform:translate(-46%,-56%) scale(1.12)}}
+@media(max-width:800px){.os-grid,.track-grid,.weekly-grid{grid-template-columns:1fr}.rings{grid-template-columns:repeat(3,1fr)}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -809,16 +831,15 @@ footer {
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="hero-content">
-    <div class="hero-badge">Available for remote opportunities</div>
+    <div class="hero-badge">Software Engineer · Building toward ML / AI Engineering</div>
     <h1>
       Ahmed Shahine<br/>
-      <span class="dim">Full-Stack</span>
-      <span class="accent"> .NET</span><br/>
-      <span class="dim">Developer</span>
+      <span class="dim">Software</span>
+      <span class="accent"> Engineer</span><br/>
+      <span class="dim">.NET · Angular · ML/AI</span>
     </h1>
     <p class="hero-sub">
-      Building production-grade web applications with ASP.NET Core, Angular, and SQL Server.
-      3+ years shipping scalable backends and reactive frontends for real users.
+      Building production-grade systems with ASP.NET Core and Angular while developing a second professional track in Machine Learning and AI Engineering.
     </p>
     <div class="hero-metrics">
       <div class="metric">
@@ -1076,7 +1097,7 @@ footer {
 
 <!-- ═══════ FOOTER ═══════ -->
 <footer>
-  <span>Ahmed Shahine © 2025</span>
+  <span>Ahmed Shahine © 2026</span>
   <span>Cairo, Egypt · Open to Remote</span>
 </footer>
 
@@ -1104,15 +1125,46 @@ footer {
       <button class="admin-close" onclick="closeAdmin()">✕ close</button>
     </div>
     <div class="admin-tabs">
-      <button class="a-tab active" onclick="switchTab('today')">Today</button>
+      <button class="a-tab active" onclick="switchTab('dashboard')">Dashboard</button>
+      <button class="a-tab" onclick="switchTab('today')">Today</button>
+      <button class="a-tab" onclick="switchTab('weekly')">Weekly Balance</button>
+      <button class="a-tab" onclick="switchTab('interviews')">Mock Interviews</button>
       <button class="a-tab" onclick="switchTab('plan')">30-Day Plan</button>
       <button class="a-tab" onclick="switchTab('stats')">Statistics</button>
       <button class="a-tab" onclick="switchTab('settings')">Settings</button>
     </div>
     <div class="admin-body">
 
+
+      <div class="a-section active" id="tab-dashboard">
+        <div class="os-grid">
+          <div class="os-card">
+            <div class="os-kicker">Ahmed Development OS · flexible day</div>
+            <div class="os-big" id="os-date">Today</div>
+            <div class="os-muted">8h work · 5h self-development · 2h movement. Split the sessions however your day needs.</div>
+            <div class="rings">
+              <div class="ring"><b id="work-progress">0.0h</b><span>/ 8H WORK</span></div>
+              <div class="ring"><b id="dev-progress">0.0h</b><span>/ 5H DEVELOPMENT</span></div>
+              <div class="ring"><b id="fit-progress">0.0h</b><span>/ 2H MOVEMENT</span></div>
+            </div>
+            <div class="timer-row"><span class="timer-display" id="work-timer">00:00:00</span><button class="a-btn a-btn-primary" id="work-timer-btn" onclick="toggleWorkTimer()">Start Work Session</button><button class="a-btn a-btn-ghost" onclick="addManualMinutes('Work',60)">+1h work</button></div>
+          </div>
+          <div class="os-card">
+            <div class="os-kicker">Execution score</div><div class="os-big"><span id="daily-completion">0%</span> complete</div>
+            <div class="os-muted" id="daily-summary">Load today's plan to begin.</div>
+            <button class="a-btn a-btn-ghost" style="margin-top:14px" onclick="enableNotifications()">Enable browser reminder</button>
+          </div>
+        </div>
+        <div class="section-label" style="margin-bottom:12px">// weekly development tracks</div><div class="track-grid" id="track-grid"></div>
+      </div>
+      <div class="a-section" id="tab-weekly"><div class="section-label">// balance beats impossible daily perfection</div><div class="os-muted" style="margin-bottom:16px">35 development hours per week + 14 movement hours. Change targets whenever work or diploma pressure changes.</div><div class="weekly-grid" id="weekly-grid"></div></div>
+      <div class="a-section" id="tab-interviews">
+        <div class="section-label">// ChatGPT mock interview loop</div><div class="os-muted" style="margin-bottom:16px">Study → Mock → identify weakness → improve → re-test. Default target: 2 sessions/week.</div>
+        <div class="add-task-form"><div class="form-row"><select class="a-select" id="mock-type"><option>HR / English</option><option>.NET / Backend</option><option>Angular</option><option>System Design</option><option>Problem Solving</option><option>ML / AI</option></select><input class="a-input" id="mock-score" type="number" min="0" max="10" placeholder="Score /10"/></div><div class="form-row"><input class="a-input" id="mock-weakness" placeholder="Weaknesses / topics to improve"/></div><div class="form-row"><input class="a-input" id="mock-notes" placeholder="Questions, feedback, next action"/></div><button class="a-btn a-btn-primary" onclick="saveMockInterview()">Save Session</button><a class="a-btn a-btn-ghost" href="https://chatgpt.com" target="_blank" style="text-decoration:none">Open ChatGPT ↗</a></div><div id="interview-list"></div>
+      </div>
+
       <!-- TODAY TAB -->
-      <div class="a-section active" id="tab-today">
+      <div class="a-section" id="tab-today">
         <div class="today-header">
           <div class="today-date" id="today-date">—</div>
           <div class="today-score" id="today-score">0 / 0 ✓</div>
@@ -1124,11 +1176,7 @@ footer {
             <input type="text" class="a-input" id="new-task-text" placeholder="Add a task for today..."/>
             <select class="a-select" id="new-task-cat">
               <option value="Faith">Faith</option>
-              <option value="Learning">Learning</option>
-              <option value="Project">Project</option>
-              <option value="Career">Career</option>
-              <option value="Exercise">Exercise</option>
-              <option value="Other">Other</option>
+              <option value="ML/AI">ML / AI</option><option value="Software">Software Engineering</option><option value="Diploma">Diploma</option><option value="English">English / Languages</option><option value="Communication">Communication / Soft Skills</option><option value="Reading">Book Reading</option><option value="Interview">Mock Interview</option><option value="Work">Work</option><option value="Exercise">Exercise / Walking</option><option value="Other">Other</option>
             </select>
           </div>
           <div class="form-row">
@@ -1264,47 +1312,34 @@ document.addEventListener('keydown', e => {
 function getData() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : defaultData();
+    if (!raw) return defaultData();
+    const d=JSON.parse(raw), base=defaultData();
+    return {...base,...d,weeklyTargets:{...base.weeklyTargets,...(d.weeklyTargets||{})},interviews:d.interviews||[],workSessions:d.workSessions||{}};
   } catch { return defaultData(); }
 }
 
 function defaultData() {
   return {
-    gistId: '',
-    gistToken: '',
-    presetsWeekday: [
-      { text: 'صلاة الفجر', cat: 'Faith', start: '04:00', end: '06:00' },
-      { text: 'ورد من القرآن', cat: 'Faith', start: '06:00', end: '07:00' },
-      { text: 'مذاكرة: Docker', cat: 'Learning', start: '07:00', end: '08:00' },
-      { text: 'تمرين رياضي', cat: 'Exercise', start: '08:00', end: '08:30' },
-      { text: 'فطار', cat: 'Other', start: '08:30', end: '09:30' },
-      { text: 'شغل (الجزء الأول)', cat: 'Career', start: '09:30', end: '11:30' },
-      { text: 'راحة', cat: 'Other', start: '11:30', end: '12:30' },
-      { text: 'صلاة الظهر', cat: 'Faith', start: '12:30', end: '12:45' },
-      { text: 'شغل (تكملة)', cat: 'Career', start: '12:45', end: '14:00' },
-      { text: 'Meeting', cat: 'Career', start: '14:00', end: '15:00' },
-      { text: 'صلاة العصر', cat: 'Faith', start: '15:00', end: '15:15' },
-      { text: 'شغل (الجزء الأخير)', cat: 'Career', start: '15:15', end: '17:00' },
-      { text: 'مذاكرة: Azure', cat: 'Learning', start: '17:00', end: '19:00' },
-      { text: 'صلاة المغرب', cat: 'Faith', start: '19:00', end: '19:15' },
-      { text: 'صلاة العشاء', cat: 'Faith', start: '20:30', end: '20:45' },
-      { text: 'تعلّم لغة (إنجليزي / لغة جديدة)', cat: 'Learning', start: '20:45', end: '21:15' },
-      { text: 'وقت شخصي وتخطيط', cat: 'Other', start: '21:15', end: '23:00' },
+    gistId:'', gistToken:'',
+    presetsWeekday:[
+      {text:'Quran — reading / memorization / review',cat:'Faith',start:null,end:null,duration:30},
+      {text:'ML / AI — new learning',cat:'ML/AI',start:null,end:null,duration:90},
+      {text:'Software Engineering — .NET / Angular / architecture',cat:'Software',start:null,end:null,duration:60},
+      {text:'Diploma — lecture / assignment / review',cat:'Diploma',start:null,end:null,duration:60},
+      {text:'English speaking / communication',cat:'English',start:null,end:null,duration:30},
+      {text:'Read current book',cat:'Reading',start:null,end:null,duration:30},
+      {text:'Walk / gym / outdoor movement',cat:'Exercise',start:null,end:null,duration:120}
     ],
-    presetsWeekend: [
-      { text: 'صلاة الفجر', cat: 'Faith', start: '04:00', end: '06:00' },
-      { text: 'ورد من القرآن', cat: 'Faith', start: '06:00', end: '07:00' },
-      { text: 'مذاكرة خفيفة: مراجعة عامة', cat: 'Learning', start: '10:00', end: '11:30' },
-      { text: 'صلاة الظهر', cat: 'Faith', start: '12:30', end: '12:45' },
-      { text: 'شغل خفيف / مشروع شخصي', cat: 'Career', start: '13:00', end: '15:00' },
-      { text: 'صلاة العصر', cat: 'Faith', start: '15:00', end: '15:15' },
-      { text: 'صلاة المغرب', cat: 'Faith', start: '19:00', end: '19:15' },
-      { text: 'صلاة العشاء', cat: 'Faith', start: '20:30', end: '20:45' },
-      { text: 'تعلّم لغة (إنجليزي / لغة جديدة)', cat: 'Learning', start: '20:45', end: '21:15' },
-      { text: 'راحة ووقت شخصي', cat: 'Other', start: '21:15', end: '23:00' },
+    presetsWeekend:[
+      {text:'Quran — reading / memorization / review',cat:'Faith',start:null,end:null,duration:30},
+      {text:'Deep study / project block',cat:'ML/AI',start:null,end:null,duration:120},
+      {text:'Software Engineering review / build',cat:'Software',start:null,end:null,duration:90},
+      {text:'English + communication',cat:'English',start:null,end:null,duration:45},
+      {text:'Read current book',cat:'Reading',start:null,end:null,duration:30},
+      {text:'Walk / gym / outdoor movement',cat:'Exercise',start:null,end:null,duration:120}
     ],
-    days: {},
-    planStart: null,
+    weeklyTargets:{'ML/AI':10,'Software':7,'Diploma':6,'English':3,'Communication':2,'Reading':3,'Faith':4,'Interview':2,'Exercise':14},
+    days:{},planStart:null,interviews:[],workSessions:{},activeWorkStart:null
   };
 }
 
@@ -1436,7 +1471,7 @@ async function openAdminPanel() {
     }
   }
   document.getElementById('admin-panel').classList.add('open');
-  switchTab('today');
+  switchTab('dashboard');
   loadSettings();
 
   // Re-check missed status every 60s while admin is open
@@ -1451,12 +1486,15 @@ async function openAdminPanel() {
 ════════════════════════════════════════════════ */
 function switchTab(name) {
   document.querySelectorAll('.a-tab').forEach((t,i) => {
-    const names = ['today','plan','stats','settings'];
+    const names = ['dashboard','today','weekly','interviews','plan','stats','settings'];
     t.classList.toggle('active', names[i] === name);
   });
   document.querySelectorAll('.a-section').forEach(s => s.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
+  if (name === 'dashboard') renderDashboard();
   if (name === 'today') renderToday();
+  if (name === 'weekly') renderWeekly();
+  if (name === 'interviews') renderInterviews();
   if (name === 'plan') renderPlan();
   if (name === 'stats') renderStats();
 }
@@ -1596,7 +1634,7 @@ function addPreset() {
   const weekend = isWeekendDay(new Date());
   const list = weekend ? (data.presetsWeekend || []) : (data.presetsWeekday || []);
   list.forEach(p => {
-    data.days[key].tasks.push({ text: p.text, cat: p.cat, start: p.start || null, end: p.end || null, done: false });
+    data.days[key].tasks.push({ text: p.text, cat: p.cat, start: p.start || null, end: p.end || null, duration: p.duration || null, done: false });
   });
   saveData(data);
   renderToday();
@@ -1815,6 +1853,27 @@ function clearData() {
   localStorage.removeItem(STORAGE_KEY);
   renderToday();
 }
+
+
+/* DEVELOPMENT OS V2 */
+const TRACKS=[['ML/AI','Machine Learning → AI'],['Software','Software Engineering'],['Diploma','Postgraduate Diploma'],['English','English / Languages'],['Communication','Communication & Soft Skills'],['Reading','Book Reading'],['Faith','Quran / Personal'],['Interview','Mock Interviews'],['Exercise','Fitness / Walking']];
+function taskMinutes(t){if(t.duration)return Number(t.duration)||0;if(t.start&&t.end)return Math.max(0,timeToMinutes(t.end)-timeToMinutes(t.start));return 0}
+function weekStartKey(){const d=new Date(),day=d.getDay(),diff=(day===6?0:day+1);d.setDate(d.getDate()-diff);return d.toISOString().slice(0,10)}
+function minutesForCategory(cat){const data=getData(),start=weekStartKey();let n=0;Object.entries(data.days||{}).forEach(([k,d])=>{if(k<start)return;(d.tasks||[]).forEach(t=>{if(t.cat===cat&&t.done)n+=taskMinutes(t)})});return n}
+function todayMinutes(cat){const day=(getData().days||{})[todayKey()]||{tasks:[]};return day.tasks.filter(t=>t.cat===cat&&t.done).reduce((a,t)=>a+taskMinutes(t),0)}
+function workMinutesToday(){const d=getData();let n=(d.workSessions?.[todayKey()]||[]).reduce((a,x)=>a+(x.minutes||0),0);if(d.activeWorkStart)n+=(Date.now()-d.activeWorkStart)/60000;return Math.max(0,n)}
+function interviewCount(){return (getData().interviews||[]).filter(x=>x.date>=weekStartKey()).length}
+function renderDashboard(){const d=getData(),day=d.days[todayKey()]||{tasks:[]},total=day.tasks.length,done=day.tasks.filter(t=>t.done).length,dev=['ML/AI','Software','Diploma','English','Communication','Reading','Faith','Interview'].reduce((a,c)=>a+todayMinutes(c),0);document.getElementById('os-date').textContent=new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'});document.getElementById('work-progress').textContent=(workMinutesToday()/60).toFixed(1)+'h';document.getElementById('dev-progress').textContent=(dev/60).toFixed(1)+'h';document.getElementById('fit-progress').textContent=(todayMinutes('Exercise')/60).toFixed(1)+'h';document.getElementById('daily-completion').textContent=(total?Math.round(done/total*100):0)+'%';document.getElementById('daily-summary').textContent=total?done+' / '+total+' tasks complete · '+day.tasks.filter(t=>isMissed(t,todayKey())).length+' overdue':'Load today’s schedule to start tracking.';document.getElementById('track-grid').innerHTML=TRACKS.map(([cat,label])=>{const goal=Number(d.weeklyTargets?.[cat]||0),actual=cat==='Interview'?interviewCount():minutesForCategory(cat)/60,pct=Math.min(100,actual/Math.max(goal,1)*100);return '<div class="track"><div class="track-head"><span>'+label+'</span><b>'+actual.toFixed(cat==='Interview'?0:1)+' / '+goal+(cat==='Interview'?' sessions':'h')+'</b></div><div class="track-bar"><i style="width:'+pct+'%"></i></div></div>'}).join('');updateTimerDisplay()}
+function addManualMinutes(cat,mins){const d=getData(),k=todayKey();if(!d.days[k])d.days[k]={tasks:[]};d.days[k].tasks.push({text:cat+' manual session',cat,duration:mins,done:true,start:null,end:null});saveData(d);renderDashboard()}
+function toggleWorkTimer(){const d=getData();if(d.activeWorkStart){const mins=Math.max(1,Math.round((Date.now()-d.activeWorkStart)/60000));if(!d.workSessions)d.workSessions={};if(!d.workSessions[todayKey()])d.workSessions[todayKey()]=[];d.workSessions[todayKey()].push({start:d.activeWorkStart,end:Date.now(),minutes:mins});d.activeWorkStart=null}else d.activeWorkStart=Date.now();saveData(d);renderDashboard()}
+function updateTimerDisplay(){const d=getData(),el=document.getElementById('work-timer'),btn=document.getElementById('work-timer-btn');if(!el)return;let sec=Math.floor(workMinutesToday()*60),h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),ss=sec%60;el.textContent=[h,m,ss].map(x=>String(x).padStart(2,'0')).join(':');if(btn)btn.textContent=d.activeWorkStart?'Stop Work Session':'Start Work Session'}
+setInterval(()=>{if(document.getElementById('tab-dashboard')?.classList.contains('active'))updateTimerDisplay()},1000);
+function renderWeekly(){const d=getData();document.getElementById('weekly-grid').innerHTML=TRACKS.map(([cat,label])=>{const target=Number(d.weeklyTargets?.[cat]||0),actual=cat==='Interview'?interviewCount():minutesForCategory(cat)/60,pct=Math.min(100,actual/Math.max(target,1)*100);return '<div class="week-target"><div class="track-head"><b>'+label+'</b><span>'+actual.toFixed(cat==='Interview'?0:1)+' / '+target+(cat==='Interview'?' sessions':'h')+'</span></div><div class="track-bar"><i style="width:'+pct+'%"></i></div><div class="timer-row"><input class="a-input" style="max-width:90px" type="number" min="0" step=".5" value="'+target+'" onchange="setWeeklyTarget(\''+cat+'\',this.value)"><span class="os-muted">weekly target</span></div></div>'}).join('')}
+function setWeeklyTarget(cat,v){const d=getData();d.weeklyTargets[cat]=Number(v)||0;saveData(d);renderWeekly()}
+function saveMockInterview(){const type=document.getElementById('mock-type').value,score=Number(document.getElementById('mock-score').value||0),weakness=document.getElementById('mock-weakness').value.trim(),notes=document.getElementById('mock-notes').value.trim(),d=getData();d.interviews.unshift({id:Date.now(),date:todayKey(),type,score,weakness,notes});saveData(d);document.getElementById('mock-score').value='';document.getElementById('mock-weakness').value='';document.getElementById('mock-notes').value='';renderInterviews()}
+function renderInterviews(){const list=getData().interviews||[];document.getElementById('interview-list').innerHTML=list.length?list.map(x=>'<div class="interview-card"><div style="display:flex;justify-content:space-between"><div><span class="pill">'+esc(x.type)+'</span><span class="pill">'+x.date+'</span></div><span class="interview-score">'+x.score+'/10</span></div><div style="margin-top:10px;font-size:13px"><b>Improve:</b> '+esc(x.weakness||'—')+'</div><div class="os-muted" style="margin-top:6px">'+esc(x.notes||'')+'</div></div>').join(''):'<div class="os-muted">No sessions yet. Run a ChatGPT mock interview and log the result here.</div>'}
+async function enableNotifications(){if(!('Notification'in window)){alert('Notifications are not supported in this browser.');return}const p=await Notification.requestPermission();if(p==='granted')new Notification('Ahmed Development OS',{body:'Browser reminders enabled while the site is active.'})}
+
 
 /* ════════════════════════════════════════════════
    UTILS
