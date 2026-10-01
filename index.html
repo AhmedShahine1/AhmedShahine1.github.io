@@ -1180,8 +1180,11 @@ nav{background:#070b13bd;box-shadow:0 12px 50px #0005}
             </select>
           </div>
           <div class="form-row">
+            <input type="number" min="5" step="5" class="a-input" id="new-task-duration" placeholder="Minutes (for flexible task)" style="max-width:230px"/>
+          </div>
+          <div class="form-row">
             <div style="display:flex;align-items:center;gap:6px;flex:1">
-              <span style="font-size:12px;color:var(--muted);font-family:var(--mono)">from</span>
+              <span style="font-size:12px;color:var(--muted);font-family:var(--mono)">optional from</span>
               <input type="time" class="a-input" id="new-task-start" style="flex:1"/>
             </div>
             <div style="display:flex;align-items:center;gap:6px;flex:1">
@@ -1585,16 +1588,19 @@ function addTask() {
   const cat   = document.getElementById('new-task-cat').value;
   const start = document.getElementById('new-task-start').value;
   const end   = document.getElementById('new-task-end').value;
+  const duration = Number(document.getElementById('new-task-duration').value) || null;
   if (!text) return;
   const data = getData();
   const key = todayKey();
   if (!data.days[key]) data.days[key] = { tasks: [] };
-  data.days[key].tasks.push({ text, cat, start: start || null, end: end || null, done: false });
+  data.days[key].tasks.push({ text, cat, start: start || null, end: end || null, duration, done: false });
   saveData(data);
   document.getElementById('new-task-text').value = '';
   document.getElementById('new-task-start').value = '';
   document.getElementById('new-task-end').value = '';
+  document.getElementById('new-task-duration').value = '';
   renderToday();
+  renderDashboard();
 }
 
 // Friday = 5, Saturday = 6 in JS getDay()
