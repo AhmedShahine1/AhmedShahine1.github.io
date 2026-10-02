@@ -7,7 +7,7 @@ function save(d){localStorage.setItem(KEY,JSON.stringify(d))}
 function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 $$('.reveal').forEach(x=>new IntersectionObserver(e=>e.forEach(v=>v.isIntersecting&&v.target.classList.add('show')),{threshold:.1}).observe(x));
 document.addEventListener('mousemove',e=>{$$('.tilt:hover').forEach(c=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(900px) rotateY(${x*5}deg) rotateX(${-y*5}deg) translateY(-7px)`})});document.addEventListener('mouseout',e=>{const c=e.target.closest?.('.tilt');if(c)c.style.transform=''});
-function openOS(){document.body.style.overflow='hidden';$('#modal').classList.add('open');renderAll()}function closeOS(){document.body.style.overflow='';$('#modal').classList.remove('open')}
+function openOS(){location.href='dashboard.html'}function closeOS(){}
 function tab(id,btn){$$('.pane').forEach(x=>x.classList.remove('active'));$$('.tab').forEach(x=>x.classList.remove('active'));$('#'+id).classList.add('active');btn.classList.add('active');renderAll()}
 function weekStart(){const d=new Date(),n=d.getDay();d.setDate(d.getDate()-(n===6?0:n+1));return d.toISOString().slice(0,10)}
 function workMinutes(){const d=data();let m=(d.work[day()]||[]).reduce((a,x)=>a+x.min,0);if(d.workStart)m+=(Date.now()-d.workStart)/60000;return m}
